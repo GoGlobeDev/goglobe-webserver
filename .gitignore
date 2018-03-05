@@ -1,1 +1,11 @@
 /.gradle/
+*.html
+*.jar
+/build/
+/bin/
+*.classpath
+*.project
+/.gradle/
+/.settings/
+logs/*
+src/main/resources/application.properties
