@@ -1,10 +1,10 @@
 package com.goglobe.service;
 
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.mail.EmailException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,8 +55,8 @@ public class GoglobeServiceImpl implements GoglobeService {
 			return JacksonUtil.objToJsonWithoutNull(resMap);
 		}
 		try {
-			emailComponent.sendEmail(emailConfig.getTitle(), emailConfig.getContent() + account, emailConfig.getSendFrom(), email);
-		} catch (EmailException e) {
+			emailComponent.sendEmail(emailConfig.getTitle(), URLEncoder.encode(emailConfig.getContent() + account, "UTF-8"), emailConfig.getSendFrom(), email);
+		} catch (Exception e) {
 			e.printStackTrace();
 			return JacksonUtil.objToJsonWithoutNull(resMap);
 		}
