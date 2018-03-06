@@ -36,6 +36,10 @@ public class GoglobeServiceImpl implements GoglobeService {
 		resMap.put("status", "success");
 		Goglobe goglobe = goglobeDao.select(account);
 		if (null == goglobe) {
+			if (goglobeConfig.isEnd()) {
+				resMap.put("status", "success_end");
+				return JacksonUtil.objToJsonWithoutNull(resMap);
+			}
 			goglobe = goglobeDao.initgoglobe(account, invitedCode);
 
 		}
@@ -73,7 +77,7 @@ public class GoglobeServiceImpl implements GoglobeService {
 		}
 		
 		if (goglobeConfig.getActiveStatus().equals(goglobe.getStatus())) {
-			resMap.put("status", "success");
+			resMap.put("status", "success_already");
 			resMap.put("goglobe", goglobe);
 			return JacksonUtil.objToJsonWithoutNull(resMap);
 		}

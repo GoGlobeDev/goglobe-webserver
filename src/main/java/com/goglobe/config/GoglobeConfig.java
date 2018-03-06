@@ -15,6 +15,7 @@ public class GoglobeConfig {
 	private Integer addMoney;
 	private Integer activeStatus;
 	private Integer unActiveStatus;
+	private Boolean isEnd;
 	
 	@PostConstruct
 	private void init() {
@@ -22,6 +23,7 @@ public class GoglobeConfig {
 		this.addMoney = Integer.valueOf(environment.getProperty("goglobe.addMoney"));
 		this.activeStatus = Integer.valueOf(environment.getProperty("goglobe.activeStatus"));
 		this.unActiveStatus = Integer.valueOf(environment.getProperty("goglobe.unActiveStatus"));
+		this.isEnd = Boolean.valueOf(environment.getProperty("goglobe.isEnd"));
 	}
 	
 	public Integer getInitMoney() {
@@ -35,5 +37,8 @@ public class GoglobeConfig {
 	}
 	public Integer getUnActiveStatus() {
 		return unActiveStatus;
+	}
+	public Boolean isEnd() {
+		return isEnd;
 	}
 }
