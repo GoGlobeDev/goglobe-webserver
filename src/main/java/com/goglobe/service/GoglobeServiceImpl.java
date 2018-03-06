@@ -1,6 +1,5 @@
 package com.goglobe.service;
 
-import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -27,7 +26,7 @@ public class GoglobeServiceImpl implements GoglobeService {
 	private GoglobeConfig goglobeConfig;
 	@Autowired
 	private EmailConfig emailConfig;
-	
+
 	private Logger logger = LogManager.getLogger(GoglobeServiceImpl.class);
 
 	@Override
@@ -46,16 +45,18 @@ public class GoglobeServiceImpl implements GoglobeService {
 		resMap.put("goglobe", goglobe);
 		return JacksonUtil.objToJsonWithoutNull(resMap);
 	}
-	
+
 	@Override
 	public String sendEmail(String account, String email) {
-		Map<String,String> resMap = new HashMap<>();
+		Map<String, String> resMap = new HashMap<>();
 		resMap.put("status", "fail");
-		if (StringUtils.isAnyBlank(account,email) || !email.contains("@")) {
+		if (StringUtils.isAnyBlank(account, email) || !email.contains("@")) {
 			return JacksonUtil.objToJsonWithoutNull(resMap);
 		}
 		try {
-			emailComponent.sendEmail(emailConfig.getTitle(), URLEncoder.encode(emailConfig.getContent() + account, "UTF-8"), emailConfig.getSendFrom(), email);
+			String content = emailConfig.getContent() + account;
+			emailComponent.sendEmail(emailConfig.getTitle(), "<a href = \"" + content + "\">" + content + "</a>",
+					emailConfig.getSendFrom(), email);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return JacksonUtil.objToJsonWithoutNull(resMap);
@@ -75,13 +76,13 @@ public class GoglobeServiceImpl implements GoglobeService {
 			resMap.put("status", "fail_nouser");
 			return JacksonUtil.objToJsonWithoutNull(resMap);
 		}
-		
+
 		if (goglobeConfig.getActiveStatus().equals(goglobe.getStatus())) {
 			resMap.put("status", "success_already");
 			resMap.put("goglobe", goglobe);
 			return JacksonUtil.objToJsonWithoutNull(resMap);
 		}
-		
+
 		if (!goglobeDao.activeGoglobe(account)) {
 			resMap.put("status", "fail_active");
 			return JacksonUtil.objToJsonWithoutNull(resMap);

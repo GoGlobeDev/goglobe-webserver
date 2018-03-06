@@ -31,7 +31,7 @@ public class GoglobeController {
 	}
 	
 	@RequestMapping(value = "/active", method = RequestMethod.POST)
-	public String checkCode(String account) {
-		return goglobeService.activeGoglobe(account);
+	public String checkCode(@RequestBody Map<String,String> map) {
+		return goglobeService.activeGoglobe(map.get("account"));
 	}
 }
