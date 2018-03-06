@@ -72,7 +72,7 @@ public class GoglobeServiceImpl implements GoglobeService {
 		Map<String, Object> resMap = new HashMap<>();
 		Goglobe goglobe = goglobeDao.select(account);
 		if (null == goglobe) {
-			resMap.put("status", "fail");
+			resMap.put("status", "fail_nouser");
 			return JacksonUtil.objToJsonWithoutNull(resMap);
 		}
 		
@@ -83,7 +83,7 @@ public class GoglobeServiceImpl implements GoglobeService {
 		}
 		
 		if (!goglobeDao.activeGoglobe(account)) {
-			resMap.put("status", "fail");
+			resMap.put("status", "fail_active");
 			return JacksonUtil.objToJsonWithoutNull(resMap);
 		}
 		resMap.put("status", "success");
