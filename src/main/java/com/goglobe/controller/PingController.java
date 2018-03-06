@@ -10,6 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class PingController {
 	@RequestMapping(value = "/ping")
 	public String ping() {
-		return "running";
+		return "goglobe running";
 	}
 }
