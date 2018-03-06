@@ -30,7 +30,7 @@ public class GoglobeController {
 		return goglobeService.sendEmail(requestMap.get("account"), requestMap.get("email"));
 	}
 	
-	@RequestMapping(value = "/active", method = RequestMethod.GET)
+	@RequestMapping(value = "/active", method = RequestMethod.POST)
 	public String checkCode(String account) {
 		return goglobeService.activeGoglobe(account);
 	}
