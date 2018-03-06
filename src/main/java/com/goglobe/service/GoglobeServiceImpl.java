@@ -94,7 +94,7 @@ public class GoglobeServiceImpl implements GoglobeService {
 				logger.error("add money by invitation wrong, invitedCode:" + goglobe.getInvitedCode());
 			}
 		}
-		return JacksonUtil.objToJsonWithoutNull(goglobe);
+		return JacksonUtil.objToJsonWithoutNull(resMap);
 	}
 
 }
