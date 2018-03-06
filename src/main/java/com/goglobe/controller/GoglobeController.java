@@ -18,12 +18,12 @@ public class GoglobeController {
 	@Autowired
 	private GoglobeService goglobeService;
 
-	@RequestMapping(value = "/login", method = {RequestMethod.POST, RequestMethod.OPTIONS})
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String login(@RequestBody Map<String, String> requestMap) {
 		return goglobeService.login(requestMap.get("account"), requestMap.get("invitedCode"));
 	}
 
-	@RequestMapping(value = "/send", method = {RequestMethod.POST, RequestMethod.OPTIONS})
+	@RequestMapping(value = "/send", method = RequestMethod.POST)
 	public String sendEmail(@RequestBody Map<String,String> requestMap) {
 		return goglobeService.sendEmail(requestMap.get("account"), requestMap.get("email"));
 	}
