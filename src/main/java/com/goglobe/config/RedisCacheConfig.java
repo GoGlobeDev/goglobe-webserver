@@ -23,7 +23,7 @@ public class RedisCacheConfig {
    @Bean
     public RedisConnectionFactory lettuceConnectionFactory() {
         RedisStandaloneConfiguration redisStandaloneConfiguration = new RedisStandaloneConfiguration("localhost",
-                3333);
+                4444);
         return new LettuceConnectionFactory(redisStandaloneConfiguration);
     }
 }
