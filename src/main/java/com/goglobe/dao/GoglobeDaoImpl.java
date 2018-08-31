@@ -31,6 +31,14 @@ public class GoglobeDaoImpl implements GoglobeDao {
 	public boolean updateEmail(String account, String email) {
 		return 1 == goglobeMapper.updateGoglobeByAccount(new Goglobe(account, email));
 	}
+	
+	@Override
+	public boolean updatePhone(String account, String phone) {
+		Goglobe gog = new Goglobe();
+		gog.setAccount(account);
+		gog.setPhone(phone);
+		return 1 == goglobeMapper.updateGoglobeByAccount(gog);
+	}
 
 	@Override
 	public boolean activeGoglobe(String account) {

@@ -15,6 +15,8 @@ public class Goglobe {
 
     private Integer status;
     
+    private String phone;
+    
     public Goglobe() {
 		super();
 	}
@@ -101,4 +103,12 @@ public class Goglobe {
     public void setStatus(Integer status) {
         this.status = status;
     }
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
 }

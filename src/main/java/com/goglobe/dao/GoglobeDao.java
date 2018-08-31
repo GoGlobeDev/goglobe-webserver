@@ -13,4 +13,6 @@ public interface GoglobeDao {
 	boolean activeGoglobe(String account);
 
 	boolean addMoneyByInvitation(String invitedCode);
+
+	boolean updatePhone(String account, String phone);
 }

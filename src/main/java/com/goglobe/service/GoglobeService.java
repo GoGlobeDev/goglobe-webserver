@@ -8,4 +8,8 @@ public interface GoglobeService {
 
 	String sendEmail(String account, String email);
 
+	String sendCode(String account, String phone);
+
+	String activeGoglobe(String account, String code);
+
 }

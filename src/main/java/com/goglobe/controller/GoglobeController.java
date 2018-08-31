@@ -34,4 +34,14 @@ public class GoglobeController {
 	public String checkCode(@RequestBody Map<String,String> map) {
 		return goglobeService.activeGoglobe(map.get("account"));
 	}
+	
+	@RequestMapping(value = "/send/code", method = RequestMethod.POST)
+	public String sendCode(@RequestBody Map<String,String> requestMap) {
+		return goglobeService.sendCode(requestMap.get("account"), requestMap.get("phone"));
+	}
+	
+	@RequestMapping(value = "/active/account", method = RequestMethod.POST)
+	public String activeAccount(@RequestBody Map<String,String> map) {
+		return goglobeService.activeGoglobe(map.get("account"),map.get("code"));
+	}
 }
