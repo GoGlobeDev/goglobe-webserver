@@ -15,4 +15,8 @@ public interface GoglobeDao {
 	boolean addMoneyByInvitation(String invitedCode);
 
 	boolean updatePhone(String account, String phone);
+	
+	Goglobe selectByCode(String code);
+	
+	Integer selectNumberByInvitedCode(String code);
 }

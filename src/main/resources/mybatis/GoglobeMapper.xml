@@ -25,7 +25,8 @@
 									and ${criterion.condition} #{criterion.value}
 								</when>
 								<when test="criterion.betweenValue">
-									and ${criterion.condition} #{criterion.value} and
+									and ${criterion.condition} #{criterion.value}
+									and
 									#{criterion.secondValue}
 								</when>
 								<when test="criterion.listValue">
@@ -53,17 +54,22 @@
 		where id = #{id,jdbcType=INTEGER}
 	</select>
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-		delete from goglobe
+		delete from
+		goglobe
 		where id = #{id,jdbcType=INTEGER}
 	</delete>
 	<insert id="insert" parameterType="com.goglobe.dao.model.Goglobe">
-		insert into goglobe (id, account, email,
+		insert into goglobe (id,
+		account, email,
 		code, invited_code,
 		money, status,phone)
-		values (#{id,jdbcType=INTEGER}, #{account,jdbcType=VARCHAR},
+		values
+		(#{id,jdbcType=INTEGER}, #{account,jdbcType=VARCHAR},
 		#{email,jdbcType=VARCHAR},
-		#{code,jdbcType=VARCHAR}, #{invitedCode,jdbcType=VARCHAR},
-		#{money,jdbcType=INTEGER}, #{status,jdbcType=INTEGER},#{phone,jdbcType=VARCHAR})
+		#{code,jdbcType=VARCHAR},
+		#{invitedCode,jdbcType=VARCHAR},
+		#{money,jdbcType=INTEGER},
+		#{status,jdbcType=INTEGER},#{phone,jdbcType=VARCHAR})
 	</insert>
 	<insert id="insertSelective" parameterType="com.goglobe.dao.model.Goglobe">
 		insert into goglobe
@@ -149,13 +155,17 @@
 	</update>
 	<update id="updateByPrimaryKey" parameterType="com.goglobe.dao.model.Goglobe">
 		update goglobe
-		set account = #{account,jdbcType=VARCHAR},
-		email = #{email,jdbcType=VARCHAR},
+		set
+		account = #{account,jdbcType=VARCHAR},
+		email =
+		#{email,jdbcType=VARCHAR},
 		code = #{code,jdbcType=VARCHAR},
 		invited_code = #{invitedCode,jdbcType=VARCHAR},
-		money = #{money,jdbcType=INTEGER},
+		money =
+		#{money,jdbcType=INTEGER},
 		status = #{status,jdbcType=INTEGER},
-		phone = #{phone,jdbcType=VARCHAR}
+		phone =
+		#{phone,jdbcType=VARCHAR}
 		where id = #{id,jdbcType=INTEGER}
 	</update>
 	<update id="updateGoglobeByAccount" parameterType="com.goglobe.dao.model.Goglobe">
@@ -180,7 +190,8 @@
 	<update id="addMoneyByInvitation" parameterType="com.goglobe.dao.model.Goglobe">
 		update goglobe
 		set money = money + #{money,jdbcType=INTEGER}
-		where invited_code = #{invitedCode,jdbcType=VARCHAR}
+		where code =
+		#{invitedCode,jdbcType=VARCHAR}
 	</update>
 	<select id="selectByCode" parameterType="java.lang.String"
 		resultType="java.lang.Integer">
@@ -202,5 +213,17 @@
 		<include refid="Base_Column_List" />
 		from goglobe
 		where account = #{account,jdbcType=VARCHAR}
+	</select>
+	<select id="selectGoglobeByCode" parameterType="java.lang.String"
+		resultMap="BaseResultMap">
+		select 
+		<include refid="Base_Column_List" />
+		from goglobe
+		where code = #{code,jdbcType=VARCHAR}
+	</select>
+	<select id="selectNumberByInvitedCode" parameterType="java.lang.String" resultType="java.lang.Integer">
+	select count(*)
+	from goglobe
+	where invited_code = #{code,jdbcType=VARCHAR}
 	</select>
 </mapper>

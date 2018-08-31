@@ -24,4 +24,8 @@ public interface GoglobeMapper {
     
     Integer selectByKey(String key);
     
+    Goglobe selectGoglobeByCode(String code);
+    
+    int selectNumberByInvitedCode(String code);
+    
 }

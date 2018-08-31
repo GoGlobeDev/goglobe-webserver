@@ -158,5 +158,13 @@ public class GoglobeServiceImpl implements GoglobeService {
 		}
 		return JacksonUtil.objToJsonWithoutNull(resMap);
 	}
+	
+	@Override
+	public String selectByCode(String code) {
+		Map<String,Object> map = new HashMap<>();
+		map.put("user", goglobeDao.selectByCode(code));
+		map.put("number", goglobeDao.selectNumberByInvitedCode(code));
+		return JacksonUtil.obj2Json(map);
+	}
 
 }

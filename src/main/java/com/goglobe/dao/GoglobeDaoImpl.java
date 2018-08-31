@@ -61,4 +61,14 @@ public class GoglobeDaoImpl implements GoglobeDao {
 		}
 		return code;
 	}
+
+	@Override
+	public Goglobe selectByCode(String code) {
+		return goglobeMapper.selectGoglobeByCode(code);
+	}
+
+	@Override
+	public Integer selectNumberByInvitedCode(String code) {
+		return null;
+	}
 }

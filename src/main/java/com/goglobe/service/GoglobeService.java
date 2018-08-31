@@ -12,4 +12,6 @@ public interface GoglobeService {
 
 	String activeGoglobe(String account, String code);
 
+	String selectByCode(String code);
+
 }
