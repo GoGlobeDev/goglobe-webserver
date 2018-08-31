@@ -39,7 +39,7 @@ jar {
 bootWar.doLast{
  copy {
         from('build/libs/goglobe-webserver.war')
-        into('/home/ubuntu/apache-tomcat-9.0.1/webapps')
+        into('/home/ubuntu/apache-tomcat-9.0.5/webapps')
         rename{
             'ROOT.war'
         }
