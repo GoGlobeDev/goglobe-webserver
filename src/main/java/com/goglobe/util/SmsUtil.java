@@ -27,7 +27,7 @@ public class SmsUtil {
     private static final String accessKeyId = "LTAItmAvOORPn0fe";
     private static final String accessKeySecret = "pE8vpTDU3hE3AkxDh1QCUMf1RB6KK5";
     //短信签名
-    private static final String SMS_SIGN = "T1898"; 
+    private static final String SMS_SIGN = "自游俱乐部"; 
 
     public static String sendSms(String phone,String smsTemp,String code) throws ClientException {
 
