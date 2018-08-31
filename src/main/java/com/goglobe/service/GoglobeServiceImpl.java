@@ -89,7 +89,7 @@ public class GoglobeServiceImpl implements GoglobeService {
 			e.printStackTrace();
 			return JacksonUtil.objToJsonWithoutNull(resMap);
 		}
-		if (!goglobeDao.updateEmail(account, phone)) {
+		if (!goglobeDao.updatePhone(account, phone)) {
 			logger.error("updateEmail wrong, account:" + account + ",phone:" + phone);
 		}
 		resMap.put("status", "success");
